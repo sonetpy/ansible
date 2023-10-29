@@ -1,0 +1,11 @@
+#[dbservers]
+#hgns[1:10].hc.com
+
+#[webservers]
+#192.168.11.[1:5]
+
+[dbsrvs]
+192.168.204.137
+
+[websrvs]
+192.168.204.136

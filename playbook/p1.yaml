@@ -1,0 +1,18 @@
+- hosts: webserver
+  tasks:
+    - file:
+        path: /tmp/data
+        state: touch
+    
+    - copy:
+        src: /etc/fstab
+        dest: /tmp/
+
+    - service:
+        name: crond
+        state: restarted 
+          #    - yum:
+          #        name:
+          #          - ftp
+          #          - httpd
+          #        state: installed

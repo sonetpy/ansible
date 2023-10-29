@@ -1,0 +1,8 @@
+## ------------- Abhinav 29 Oct -------------
+# Ex 2: A collection of hosts belonging to the 'webservers' group:
+
+[webservers]
+192.168.204.136
+
+[dbservers]
+VM3
