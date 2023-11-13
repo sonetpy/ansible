@@ -1,0 +1,22 @@
+## This playbook will pick password from inventory file variable
+# and for username it will prompt on the screen
+# I could have given both on 
+- name: Playbook to handle users
+  hosts: all
+  
+  vars_prompt:
+  - name: username_sonu
+    prompt: "Enter username:"
+        ## I need to purposely mention that otherwise by default these prompt variables on screen is accepted as private and when you type on prompt it will not dispaly anything but in backedn it will be typed.
+    private: no
+
+  tasks:
+    - name: Perform a task on Red Hat systems for user and password
+      user:
+        name: "{{ username_sonu }}"
+        password: "{{ mypass | password_hash('sha512') }}"
+        state: present
+
+    - debug:
+        msg: "{{ username_sonu }} and passsword {{ mypass }}"
+

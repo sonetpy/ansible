@@ -1,0 +1,11 @@
+- name: Example Playbook with Register Variable
+  hosts: all
+  tasks:
+    - name: Run a command and capture its output
+      command: echo "Hello, Ansible!"
+      register: command_output
+
+    - name: Display the registered variable
+      debug:
+        var: command_output.stdout
+

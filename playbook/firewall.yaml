@@ -1,0 +1,5 @@
+- name: bhai ye firewall start kare ga
+  service:
+    name: firewalld
+    state: restarted
+    enabled: true

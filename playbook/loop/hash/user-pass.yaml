@@ -1,0 +1,13 @@
+- name: example of list of hash loop
+  hosts: all
+  tasks:
+    - name: add user and supply pass
+      user:
+        name: "{{ item.x }}"
+        password: "{{ item.y | password_hash('sha512') }}"
+        state: present
+      loop:
+        - { x: 'test1', y: 'rhel' }
+        - { x: 'test2', y: 'centos' }
+        - { x: 'test3', y: 'debian' }
+

@@ -1,0 +1,21 @@
+- name: Ansible Array Usage Example
+  hosts: all
+  vars:
+    students:
+      - Alice
+      - Mark
+      - Peter
+
+  tasks:
+    - name: Ansible Array Usage Example
+      debug:
+        msg: "{{ students }}"
+
+    - name: Ansible Array Usage Example
+      debug:
+        msg: "{{ students[2] }}"
+
+    - name: Ansible Array Usage Example
+      debug:
+        msg: "{{ students[0:2] }}"
+

@@ -1,0 +1,39 @@
+---
+- name: This is a practical use of variables
+  hosts: webserver
+  vars_files:
+    - abhinku-vars.yaml  # Include the external variables file
+
+  tasks:
+    - name: Install service
+      yum:
+        name: "{{ webpkg }}"
+        state: present
+    - name: Start web service
+      service:
+        name: "{{ webpkg }}"
+        state: started
+
+    - name: Create directory "{{ webroot }}"
+      file:
+        path: "{{ webroot }}"
+        state: directory
+        mode: '0755'
+
+    - name: Install other packages, dude!!!
+      yum:
+        name: "{{ abhinku }}"
+        state: installed
+
+- name: Another Play for dbserver
+  hosts: dbserver
+  vars_files:
+    - abhinku-vars.yaml  # Include the external variables file
+
+  tasks:
+    - name: Create directory "{{ webroot }}"
+      file:
+        path: "{{ webroot }}"
+        state: directory
+        mode: '0755'
+

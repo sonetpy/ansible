@@ -1,0 +1,9 @@
+- name: Read file contents and process each line
+  hosts: all
+  tasks:
+    - name: Read file contents using lookup
+      user:
+        name: "{{ item }}"
+        state: present
+      with_lines: "{{ lookup('file', '/home/abhinku/ansible-learnings/playbook/loop/standard_loop/testuser').split('\n') }}"
+

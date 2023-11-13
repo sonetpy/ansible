@@ -1,0 +1,18 @@
+- name: checking only the checksum of /etc/hosts file and nothing else.
+  hosts: webserver
+  tasks:
+    - name: check if file exists and print checksum
+      stat:  # Using the "stat" module to check file existence
+        path: /etc/hosts
+      register: file_hai_ki_nai
+
+    - name: perform task based on the existence of the file
+      debug:
+        msg: "file exists dude !!"
+      when: file_hai_ki_nai.stat.exists
+
+    - name: perform a different task if the file doesn't exist
+      debug:
+        msg: "bhai file exists nai karti"
+      when: not file_hai_ki_nai.stat.exists
+

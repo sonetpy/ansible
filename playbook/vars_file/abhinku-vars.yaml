@@ -1,0 +1,7 @@
+---
+webpkg: httpd
+webroot: /var/www/html
+abhinku:
+  - vsftpd
+  - ftp
+

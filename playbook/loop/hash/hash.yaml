@@ -1,0 +1,9 @@
+- name: learning hash loop
+  hosts: all
+  tasks:
+    - copy:
+        src: "{{ item.a }}"
+        dest: "{{ item.b }}"
+      loop:
+        - { a: '/etc/passwd' , b: '/tmp' }
+        - { a: '/etc/fstab' , b: '/tmp' }

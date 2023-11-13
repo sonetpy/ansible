@@ -1,0 +1,21 @@
+- hosts: 
+    - webserver
+  user: abhinku
+  become: true
+  tasks:
+    - name: Dude this is going to create file 
+      file:
+        path: /tmp/data
+        state: touch
+    - name: Bhai, this is copying fstab file now.
+      copy:
+        src: /etc/fstab
+        dest: /tmp/
+
+    - name: bhaiya mere, yaar ye crond service restart kar raha hai. yaar thoda thand rakh
+      service:
+        name: crond
+        state: restarted
+
+    - name: Importing the another playbook task file, dude
+      import_tasks: /home/abhinku/ansible-learnings/playbook/firewall.yaml

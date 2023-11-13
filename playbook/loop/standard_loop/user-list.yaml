@@ -1,0 +1,6 @@
+# just decaler anything and make list of users
+sonu_users:
+  - test7
+  - test8
+sonu_files:
+  - /etc/hostname

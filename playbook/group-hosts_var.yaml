@@ -1,0 +1,16 @@
+## This playbook will pick password from inventory file variable
+# and for username it will prompt on the screen
+# I could have given both on 
+- name: Playbook to handle users
+  hosts: all
+  
+  tasks:
+    - name: Perform a task on Red Hat systems for user and password
+      user:
+        name: "{{ username }}"
+        password: "{{ mypass | password_hash('sha512') }}"
+        state: present
+
+    - debug:
+        msg: "{{ username }} and passsword {{ mypass }}"
+

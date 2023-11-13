@@ -1,0 +1,17 @@
+- name: Playbook to handle users
+  hosts: dbserver
+
+  vars_prompt:
+    - name: username_sonu
+      prompt: "Enter username:"
+        ## I need to purposely mention that otherwise by default these prompt variables on screen is accepted as private and when you type on prompt it will not dispaly anything but in backedn it will be typed.
+      private: no
+
+    - name: password
+      prompt: "Enter password"
+  tasks:
+  - name: Create user and enter password bhai
+    user:
+      name: "{{ username_sonu }}"
+      password: "{{ password | password_hash('sha512') }}"
+      state: present

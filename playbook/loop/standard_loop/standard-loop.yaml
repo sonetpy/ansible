@@ -1,0 +1,25 @@
+# fruits=["apple", "banana", "mango"] -->> with_items
+# for x in fruits:  --->> x is item
+#     print(x)
+#
+### here item and with_items are Ansible pre defined keywords
+- name: example of useradd in standard loop
+  hosts: all
+  tasks:
+    - name: add user test4 test5 test6
+      user:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - test4
+        - test5
+        - test6
+
+    - name: copy files on different vms
+      copy:
+        src: "{{ item }}"
+        dest: /tmp
+      with_items:
+        - /etc/passwd
+        - /etc/fstab
+        - /etc/hosts
