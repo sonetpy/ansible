@@ -1,0 +1,10 @@
+---
+- name: debug module demo
+  hosts: all
+  vars:
+    fruit: "apple"
+  tasks:
+    - name: debug a message here
+      ansible.builtin.debug:
+        msg: "our fruit is {{ fruit }}"
+        verbosity: 2

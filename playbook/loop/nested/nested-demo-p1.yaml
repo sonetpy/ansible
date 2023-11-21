@@ -1,0 +1,31 @@
+- name: example of nestead loop
+  hosts: all
+  vars_files:
+    - ./nested-demo.yaml
+  tasks:
+    - name: add groups
+      group:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - "{{ mygroup }}"
+
+    - name: add user and apply password
+      user:
+        name: "{{ item[0] }}"
+        groups: "{{ item[1] }}"
+        append: yes
+        state: present
+      with_nested:
+        - "{{ myuser }}"
+        - "{{ mygroup }}"
+
+    - name: copies file
+      copy:
+        src: "{{ item[0] }}"
+        dest: "{{ item[1] }}"
+        state: present
+      with_nested:
+        - "{{ myfiles }}"
+        - "{{ mydir }}"  
+

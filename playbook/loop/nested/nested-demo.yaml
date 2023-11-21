@@ -1,0 +1,16 @@
+myuser:
+- ricky
+- dhoni
+- virat
+mygroup:
+- bat
+- wk
+- star
+myfiles:
+- /etc/passwd
+- /etc/fstab
+- /etc/hosts
+mydir:
+- /root
+- /tmp
+- /var/tmp

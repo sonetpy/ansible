@@ -1,0 +1,11 @@
+- name: Example with_items
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Debug task
+      debug:
+        msg: "Item: {{ item }}"
+      with_items:
+        - 'apple'
+        - 'banana'
+        - 'orange'

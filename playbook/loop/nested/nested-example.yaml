@@ -1,0 +1,10 @@
+- name: Example with_nested
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Debug task
+      debug:
+        msg: "Outer loop: {{ item.0 }}, Inner loop: {{ item.1 }}"
+      with_nested:
+        - [1, 2, 3]
+        - ['a', 'b', 'c']

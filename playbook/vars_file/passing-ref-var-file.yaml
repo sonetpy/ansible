@@ -1,3 +1,5 @@
+# In Ansible, a vars_files parameter is used to include external variable files in your playbook. This parameter allows you to separate your variables from the playbook, making it more modular and easier to manage. The vars_files parameter takes a list of paths to variable files, and the variables defined in those files will be available for use in your playbook.
+# By using vars_files, you can keep your playbook more organized and make it easier to manage and reuse variables across multiple playbooks. Note that starting from Ansible 2.4, the vars_files parameter is deprecated in favor of vars_files list directly within the playbook.
 ---
 - name: This is a practical use of variables
   hosts: webserver
