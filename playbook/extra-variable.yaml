@@ -1,0 +1,8 @@
+- name: uses of extra variable to pass at the runtime
+  hosts: all
+  tasks:
+    - name: adding user to you hsots
+      user:
+        name: "{{ sonu_user }}"
+        password: "{{ sonu_pass | password_hash('sha512') }}"
+        state: present

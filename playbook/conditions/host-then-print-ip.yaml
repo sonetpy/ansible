@@ -1,0 +1,11 @@
+- name: Ansible playbook which will check if hostname is VM3 then get the IP.
+  hosts: all
+  tasks:
+    - name: check for hostname VM3
+      set_fact:
+        ye_ip_hai: "{{ ansible_ens160.ipv4.address }}"
+      when: ansible_hostname == 'VM3'
+    - debug:
+        msg: "dude this is the IP {{ ye_ip_hai }} of the host {{ ansible_hostname }}"
+      when: ansible_hostname == 'VM3'
+

@@ -1,0 +1,25 @@
+---
+- name: Append ansible_facts to /etc/hosts
+  hosts: all
+  tasks:
+    - name: yaar ye playbook sirf ansible_facts se values uthayegi aur append kar degi /etc/hosts mai
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        line: "{{ ansible_ens160.ipv4.address }} {{ ansible_hostname }}"
+        state: present
+          #dest: /etc/hosts
+      loop: "{{ groups['all'] }}" 
+        
+# This playbook will loop through all the hosts in the all group and append the IP address and hostname of each host to the /etc/hosts file. The IP address and hostname are obtained from the ansible_facts variable. 
+# In Ansible, the `groups` variable is a dictionary that maps all the groups in your inventory file to the hosts that are in them. The key `'all'` is a special one that includes all hosts in the inventory¹².
+
+# The `groups['all']` expression in the loop will iterate over all hosts in your inventory. The inventory file is where Ansible looks for the definitions of groups and hosts. The default location for this file is `/etc/ansible/hosts`, but you can specify a different inventory file at the command line using the `-i <path>` option².
+
+# So, the `groups['all']` in the playbook is picking up all the hosts defined in your Ansible inventory file. If you want to target a specific group of hosts, you can replace `'all'` with the name of your group. For example, if you have a group named `webservers` in your inventory, you can use `groups['webservers']` to target only the hosts in that group¹².
+
+        #Source: Conversation with Bing, 11/23/2023
+        #(1) Patterns: targeting hosts and groups — Ansible Documentation. https://docs.ansible.com/ansible/latest/inventory_guide/intro_patterns.html.
+        #(#2) How to build your inventory — Ansible Documentation. https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html.
+        #(3) Ansible Tower Feature Spotlight: Instance Groups and Isolated Nodes. https://www.ansible.com/blog/ansible-tower-feature-spotlight-instance-groups-and-isolated-nodes.
+        # (4) How to Manage Multistage Environments with Ansible. https://www.digitalocean.com/community/tutorials/how-to-manage-multistage-environments-with-ansible.
+

@@ -1,0 +1,14 @@
+# /home/abhinku/ansible-learnings/inventory/host_vars
+# inventory       = /home/abhinku/ansible-learnings/inventory
+# the "hosts" is being picked up from the file '/home/abhinku/ansible-learnings/inventory/hosts-name'
+- name: Install the latest version of Apache to test host_vars file
+  hosts: all
+  tasks:
+    - name: install httpd service on VM2 and VM3
+      ansible.builtin.yum:
+        name: "{{ kumar }}"
+        state: present
+
+    - debug:
+        msg: "the package {{ kumar }} is installed on host ==>> {{ ansible_hostname }}" 
+

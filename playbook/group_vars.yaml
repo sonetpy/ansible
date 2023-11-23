@@ -1,0 +1,15 @@
+# /home/abhinku/ansible-learnings/inventory/group_vars
+# inventory       = /home/abhinku/ansible-learnings/inventory
+# the "hosts" is being picked up from the file '/home/abhinku/ansible-learnings/inventory/hosts-name'
+- name: Playbook to handle users
+  hosts: all
+  tasks:
+    - name: Perform a task on Red Hat systems for user and password
+      user:
+        name: "{{ username }}"
+        password: "{{ mypass | password_hash('sha512') }}"
+        state: present
+
+    - debug:
+        msg: "{{ username }} -->> passsword {{ mypass }} on Hostname =>> {{ ansible_hostname }}"
+
